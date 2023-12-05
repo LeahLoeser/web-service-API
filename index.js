@@ -1,13 +1,11 @@
 // import express & cors
 import express from 'express'
 import cors from 'cors'
-app.use(cors({
-    origin: '*'
-}));
 
 // Create an instance of an express application 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // Set the port the application will be running on
 const port = process.env.PORT || 5502
