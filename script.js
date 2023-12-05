@@ -11,7 +11,7 @@ const getStones = async function(){
   
         Object.keys(stoneIDsJSON).forEach(async(key,value) => {
             try {
-                const stoneInfo = await fetch(`${baseURL}car/:${stoneIDsJSON[key]}`)
+                const stoneInfo = await fetch(`${baseURL}/stone/${stoneIDsJSON[key]}`)
                 const stoneInfoJSON = await stoneInfo.json();
             
                 console.log(stoneInfoJSON)
@@ -26,7 +26,7 @@ const getStones = async function(){
                 stoneh1.appendChild(listItem)
 
             } catch (error) {
-                console.log(error)
+                console.error("Error fetching stone info:", error);
             }
         })
 
