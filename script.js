@@ -12,18 +12,18 @@ const getStones = async function(){
         Object.keys(stoneIDsJSON).forEach(async(key,value) => {
             try {
                 const stoneInfo = await fetch(`${baseURL}car/:${stoneIDsJSON[key]}`)
-                const stoneInfoJSON = await carInfo.json();
+                const stoneInfoJSON = await stoneInfo.json();
             
                 console.log(stoneInfoJSON)
 
                 //update html
-                const stoneh1 = document.getElementById("stoneIDs"); // carh1 madeup
+                const stoneh1 = document.getElementById("stoneIDs");
                 const listItem = document.createElement("li")
 
                 const stoneName = document.createTextNode(stoneInfoJSON.name)
 
                 listItem.appendChild(stoneName);
-                carh1.appendChild(listItem)
+                stoneh1.appendChild(listItem)
 
             } catch (error) {
                 console.log(error)

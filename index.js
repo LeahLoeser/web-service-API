@@ -31,7 +31,7 @@ let birthstones = {
  // car-api.com?color=Green
 
 // Set up a response for the root path of the application
-app.get('modern-birthstones.com?month=May', (req,res) => {
+app.get('/', (req,res) => {
     let birthMonth =[]; 
 
     Object.keys(birthstones).forEach((key, value) => {
@@ -45,7 +45,7 @@ app.get('modern-birthstones.com?month=May', (req,res) => {
   //url parametesr use / 
  //car-api.com/car/:1
 
- app.get('modern-birthstones.com/stone/:1',(req, res) => {
+ app.get('/stone/:1',(req, res) => {
     let stone; 
     //:1
     Object.keys(birthstones).forEach((key, value) => {
