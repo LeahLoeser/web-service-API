@@ -5,13 +5,13 @@ const monthPick = "May"; // user input here
 const getStones = async function(){
     try { //request info from API
         const stoneIDs = await fetch(`${baseURL}?month=${monthPick}`)
-        const stonesJSON = await carIDs.json();
+        const stoneIDsJSON = await stoneIDs.json();
             //getting osomething back
-        console.log(stonesJSON)
+        console.log(stoneIDsJSON)
   
-        Object.keys(stonesJSON).forEach(async(key,value) => {
+        Object.keys(stoneIDsJSON).forEach(async(key,value) => {
             try {
-                const stoneInfo = await fetch(`${baseURL}car/:${stonesJSON[key]}`)
+                const stoneInfo = await fetch(`${baseURL}car/:${stoneIDsJSON[key]}`)
                 const stoneInfoJSON = await carInfo.json();
             
                 console.log(stoneInfoJSON)

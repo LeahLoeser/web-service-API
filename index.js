@@ -15,55 +15,19 @@ const port = process.env.PORT || 3001
 // define objects
 
 let birthstones = {
-    1: {
-        month: "January",
-        stone: "Garnet"
-    },
-    2: {
-        month: "February",
-        stone: "Amethyst"
-    },
-    3: {
-        month: "March",
-        stone: "Aquamarine"
-    },
-    4: {
-        month: "April",
-        stone: "Diamond"
-    },
-    5: {
-        month: "May",
-        stone: "Emerald"
-    },
-    6: {
-        month: "June",
-        stone: "Alexandrite"
-    },
-    7: {
-        month: "July",
-        stone: "Ruby"
-    },
-    8: {
-        month: "August",
-        stone: "Peridot"
-    },
-    9: {
-        month: "September",
-        stone: "Sapphire"
-    },
-    10: {
-        month: "October",
-        stone: "Tourmaline"
-    },
-    11: {
-        month: "November",
-        stone: "Citrine"
-    },
-    12: {
-        month: "December",
-        stone: "Tanzanite"
-    },
-}
+    1: { month: "January", stone: "Garnet" },
+    2: { month: "February", stone: "Amethyst" },
+    3: { month: "March", stone: "Aquamarine" },
+    4: { month: "April", stone: "Diamond" },
+    5: { month: "May", stone: "Emerald" },
+    6: { month: "June", stone: "Alexandrite" },
+    7: { month: "July", stone: "Ruby" },
+    8: { month: "August", stone: "Peridot" },
+    9: { month: "September", stone: "Sapphire" },
+    10: { month: "October", stone: "Tourmaline" },
+    11: { month: "November", stone: "Citrine" },
+    12: { month: "December", stone: "Tanzanite" },
+  };
 
  //query structures use ? 
  // car-api.com?color=Green
@@ -73,7 +37,7 @@ app.get('/', (req,res) => {
     let birthMonth =[]; 
 
     Object.keys(birthstones).forEach((key, value) => {
-        if(req.query.color == stones[key].month){
+        if(req.query.color == birthstones[key].month){
             birthMonth.push(key)
         }
     })
@@ -83,13 +47,13 @@ app.get('/', (req,res) => {
   //url parametesr use / 
  //car-api.com/car/:1
 
- app.get('/id/:id',(req, res) => {
-    let stone = []; 
+ app.get('/stone/:stone',(req, res) => {
+    let stone; 
     //:1
     Object.keys(birthstones).forEach((key, value) => {
 
         if(req.params.stone.substring(1) == key){
-            stone = stone[key]
+            stone = birthstones[key]
         }
     })
     res.send(stone)
