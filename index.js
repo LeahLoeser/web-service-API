@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 // Set the port the application will be running on
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 5502
 
 // define objects
 
@@ -33,7 +33,7 @@ let birthstones = {
  // car-api.com?color=Green
 
 // Set up a response for the root path of the application
-app.get('/', (req,res) => {
+app.get('modern-birthstones.com?month=May', (req,res) => {
     let birthMonth =[]; 
 
     Object.keys(birthstones).forEach((key, value) => {
@@ -47,7 +47,7 @@ app.get('/', (req,res) => {
   //url parametesr use / 
  //car-api.com/car/:1
 
- app.get('/stone/:stone',(req, res) => {
+ app.get('modern-birthstones.com/stone/:1',(req, res) => {
     let stone; 
     //:1
     Object.keys(birthstones).forEach((key, value) => {
