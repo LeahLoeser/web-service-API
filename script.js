@@ -1,4 +1,4 @@
-const baseURL = "renderURL" // add render URL
+const baseURL = "https://modern-birthstones.onrender.com" // add render URL
 
 const monthPick = "May"; // user input here
 
