@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors());
 
 // Set the port the application will be running on
-const port = process.env.PORT || 5502
+const port = process.env.PORT || 3000
 
 // define objects
 
