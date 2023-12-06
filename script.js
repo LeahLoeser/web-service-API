@@ -28,7 +28,6 @@ const getStoned = async function() {
         // define output field
         const stoneList = document.getElementById("stoneList");
 
-
         // clear previous output results
         stoneList.innerHTML = "";
 
@@ -38,27 +37,30 @@ const getStoned = async function() {
                 const stoneInfoJSON = await stoneInfo.json();
                 console.log("Stone Info:", stoneInfoJSON);
 
-                // update html
-                // new list item for input month
+                // create new list item for input month
                 const inputMonthListItem = document.createElement("li");
                 const inputMonthText = document.createTextNode(`Birth month: ${inputMonth}`);
-
-                // new list item for birthstone
-                const stoneInfoListItem = document.createElement("li");
-                const stoneInfoText = document.createTextNode(`Birthstone: ${stoneInfoJSON.stone}`);
-
-                // Create an <img> element for the birthstone image
-        const stoneImage = document.createElement("img");
-        stoneImage.src = (stoneInfoJSON.stone); // Image URL from the API response
-        stoneImage.alt = (`${stoneInfoJSON.stone} Image`);
-                
                 inputMonthListItem.appendChild(inputMonthText);
                 stoneList.appendChild(inputMonthListItem);
-                stoneInfoListItem.appendChild(stoneInfoText);
-                stoneList.appendChild(stoneInfoListItem);
-                // Append the image to the <li>
-        stoneInfoListItem.appendChild(stoneImage);
 
+                // create new list item for birthstone text
+                const stoneTextListItem = document.createElement("li");
+                const stoneInfoText = document.createTextNode(`Birthstone: ${stoneInfoJSON.stone}`);
+                stoneTextListItem.appendChild(stoneInfoText);
+                // append birthstone text <li> to the list
+                stoneList.appendChild(stoneTextListItem);
+
+                // create new list item for the birthstone image
+                const stoneImageListItem = document.createElement("li");
+                // create <img> element for the birthstone image
+                const stoneImage = document.createElement("img");
+                stoneImage.src = stoneInfoJSON.imageUrl; // Use the imageUrl property directly from the API response
+                stoneImage.alt = `${stoneInfoJSON.stone} Image`;
+                // append the image to the image <li>
+                stoneImageListItem.appendChild(stoneImage);
+                // append birthstone image <li> to the list
+                stoneList.appendChild(stoneImageListItem);
+            
             } catch (error) {
                 console.error("Error fetching stone list:", error);
             }
@@ -68,5 +70,3 @@ const getStoned = async function() {
         console.error("Error fetching birthstone IDs:", error);
     }
 }
-
-getStoned();
