@@ -1,16 +1,11 @@
-// import express & cors
-import express from 'express'
-import cors from 'cors'
+import express from 'express';
+import cors from 'cors';
 
-// Create an instance of an express application 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Set the port the application will be running on
-const port = process.env.PORT || 3000
-
-// define objects
+const port = process.env.PORT || 5502;
 
 let birthstones = {
     1: { month: "January", stone: "Garnet" },
@@ -25,48 +20,27 @@ let birthstones = {
     10: { month: "October", stone: "Tourmaline" },
     11: { month: "November", stone: "Citrine" },
     12: { month: "December", stone: "Tanzanite" },
-  };
+};
 
- //query structures use ? 
- // car-api.com?color=Green
-
-// Set up a response for the root path of the application
-app.get('/', (req,res) => {
-    let birthMonth =[]; 
-
-    Object.keys(birthstones).forEach((key, value) => {
-        if(req.query.color == birthstones[key].month){
-            birthMonth.push(key)
-        }
-    })
-    res.send(birthMonth)
- });
-
-  //url parametesr use / 
- //car-api.com/car/:1
- 
- app.get('/', (req, res) => {
+app.get('/', (req, res) => {
     const { month } = req.query;
     if (month) {
-      const birthMonth = Object.keys(birthstones).filter(key => birthstones[key].month.toLowerCase() === month.toLowerCase());
-      return res.send(birthMonth);
+        const birthMonth = Object.keys(birthstones).filter(key => birthstones[key].month.toLowerCase() === month.toLowerCase());
+        return res.send(birthMonth);
     }
     res.status(400).send("Invalid request. Please provide a valid month parameter.");
-  });
-  
-//  app.get('/stone/:1',(req, res) => {
-//     let stone; 
-//     //:1
-//     Object.keys(birthstones).forEach((key, value) => {
+});
 
-//         if(req.params.stone.substring(1) == key){
-//             stone = birthstones[key]
-//         }
-//     })
-//     res.send(stone)
-//  })
+app.get('/stone/:id', (req, res) => {
+    const { id } = req.params;
+    const stone = birthstones[id];
+    if (stone) {
+        res.send(stone);
+    } else {
+        res.status(404).send("Stone not found");
+    }
+});
 
-// Set the application to listen a port
 app.listen(port, () => {
-  console.log(`app listening on port ${port}` )
-})
+    console.log(`App listening on port ${port}`);
+});
