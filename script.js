@@ -39,7 +39,7 @@ const getStoned = async function() {
 
                 // create new list item for input month
                 const inputMonthListItem = document.createElement("li");
-                const inputMonthText = document.createTextNode(`Birth month: ${inputMonth}`);
+                const inputMonthText = document.createTextNode(`Month: ${inputMonth}`);
                 inputMonthListItem.appendChild(inputMonthText);
                 stoneList.appendChild(inputMonthListItem);
 
