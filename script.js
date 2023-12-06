@@ -2,12 +2,14 @@ const baseURL = "https://modern-birthstones.onrender.com" // add render URL
 
 // const monthPick = "May"; // user input here
 
-const getStones = async function(){
+const getStones = async function() {
     try {
         const inputMonth = document.getElementById("inputMonth").value;
+        console.log("Input month:", inputMonth);
+
         const stoneIDs = await fetch(`${baseURL}?month=${encodeURIComponent(inputMonth)}`);
         const stoneIDsJSON = await stoneIDs.json();
-        console.log("stoneIDsJSON:", stoneIDsJSON);
+        console.log("Stone IDs:", stoneIDsJSON);
 
         const stoneList = document.getElementById("stoneList");
 
@@ -18,7 +20,7 @@ const getStones = async function(){
             try {
                 const stoneInfo = await fetch(`${baseURL}/stone/${key}`);
                 const stoneInfoJSON = await stoneInfo.json();
-                console.log("stoneInfoJSON:", stoneInfoJSON);
+                console.log("Stone Info:", stoneInfoJSON);
 
                 const listItem = document.createElement("li");
                 const stoneText = document.createTextNode(`Month: ${inputMonth}, Birthstone: ${stoneInfoJSON.stone}`);

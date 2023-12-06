@@ -23,13 +23,18 @@ let birthstones = {
 };
 
 app.get('/', (req, res) => {
+    console.log("Received request for birthstones");
     const { month } = req.query;
+    console.log("Requested month:", month);
+
     if (month) {
         const birthMonth = Object.keys(birthstones).filter(key => birthstones[key].month.toLowerCase() === month.toLowerCase());
+        console.log("Matching birthstones:", birthMonth);
         return res.send(birthMonth);
     }
     res.status(400).send("Invalid request. Please provide a valid month parameter.");
 });
+
 
 app.get('/stone/:id', (req, res) => {
     const { id } = req.params;
