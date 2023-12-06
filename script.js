@@ -1,6 +1,6 @@
 const baseURL = "https://modern-birthstones.onrender.com" // add render URL
 
-// const monthPick = "May"; // user input here
+const monthPick = "May"; // user input here
 
 const getStones = async function() {
     try {
