@@ -22,6 +22,7 @@ let birthstones = {
     12: { month: "December", stone: "Tanzanite" },
 };
 
+
 app.get('/', (req, res) => {
     console.log("Received request for birthstones");
     const { month } = req.query;
@@ -34,7 +35,6 @@ app.get('/', (req, res) => {
     }
     res.status(400).send("Invalid request. Please provide a valid month parameter.");
 });
-
 
 app.get('/stone/:id', (req, res) => {
     const { id } = req.params;
