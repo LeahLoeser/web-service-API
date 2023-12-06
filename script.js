@@ -4,7 +4,9 @@ const monthPick = "May"; // user input here
 
 const getStones = async function(){
     try { //request info from API
-        const stoneIDs = await fetch(`${baseURL}?month=${monthPick}`)
+        const stoneIDs = await fetch(`${baseURL}?month=${encodeURIComponent(monthPick)}`);
+
+        // const stoneIDs = await fetch(`${baseURL}?month=${monthPick}`)
         const stoneIDsJSON = await stoneIDs.json();
             //getting osomething back
         console.log(stoneIDsJSON)
@@ -20,7 +22,7 @@ const getStones = async function(){
                 const stoneh1 = document.getElementById("stoneIDs");
                 const listItem = document.createElement("li")
 
-                const stoneName = document.createTextNode(stoneInfoJSON.name)
+                const stoneName = document.createTextNode(`Month: ${monthPick}, Birthstone: ${stoneInfoJSON.stone}`);
 
                 listItem.appendChild(stoneName);
                 stoneh1.appendChild(listItem)

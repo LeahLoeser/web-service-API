@@ -44,18 +44,27 @@ app.get('/', (req,res) => {
 
   //url parametesr use / 
  //car-api.com/car/:1
+ 
+ app.get('/', (req, res) => {
+    const { month } = req.query;
+    if (month) {
+      const birthMonth = Object.keys(birthstones).filter(key => birthstones[key].month.toLowerCase() === month.toLowerCase());
+      return res.send(birthMonth);
+    }
+    res.status(400).send("Invalid request. Please provide a valid month parameter.");
+  });
+  
+//  app.get('/stone/:1',(req, res) => {
+//     let stone; 
+//     //:1
+//     Object.keys(birthstones).forEach((key, value) => {
 
- app.get('/stone/:1',(req, res) => {
-    let stone; 
-    //:1
-    Object.keys(birthstones).forEach((key, value) => {
-
-        if(req.params.stone.substring(1) == key){
-            stone = birthstones[key]
-        }
-    })
-    res.send(stone)
- })
+//         if(req.params.stone.substring(1) == key){
+//             stone = birthstones[key]
+//         }
+//     })
+//     res.send(stone)
+//  })
 
 // Set the application to listen a port
 app.listen(port, () => {
