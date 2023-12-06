@@ -32,9 +32,9 @@ const getStoned = async function() {
         // clear previous output results
         stoneList.innerHTML = "";
 
-        for (const stone of birthstoneID_JSON) {
+        for (const key of birthstoneID_JSON) {
             try {
-                const stoneInfo = await fetch(`${baseURL}/stone/${stone}`);
+                const stoneInfo = await fetch(`${baseURL}/stone/${key.id}`);
                 const stoneInfoJSON = await stoneInfo.json();
                 console.log("Stone Info:", stoneInfoJSON);
 
@@ -49,8 +49,8 @@ const getStoned = async function() {
 
                 // Create an <img> element for the birthstone image
         const stoneImage = document.createElement("img");
-        stoneImage.src = stone.imageUrl; // Image URL from the API response
-        stoneImage.alt = `${stone.stone} Image`;
+        stoneImage.src = (stoneInfoJSON.stone); // Image URL from the API response
+        stoneImage.alt = (`${stoneInfoJSON.stone} Image`);
                 
                 inputMonthListItem.appendChild(inputMonthText);
                 stoneList.appendChild(inputMonthListItem);
