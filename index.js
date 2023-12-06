@@ -1,3 +1,4 @@
+// index.js
 import express from 'express';
 import cors from 'cors';
 
@@ -7,6 +8,7 @@ app.use(cors());
 
 const port = process.env.PORT || 5502;
 
+// define months & corresponding birthstones
 let birthstones = {
     1: { month: "January", stone: "Garnet", imageUrl: "/images/january.png" },
     2: { month: "February", stone: "Amethyst", imageUrl: "/images/february.png" },
@@ -24,10 +26,12 @@ let birthstones = {
 
 
 app.get('/', (req, res) => {
+    // recieve month request for birthstone
     console.log("Received request for birthstones");
     const { month } = req.query;
     console.log("Requested month:", month);
 
+    // get birthstone objects
     if (month) {
         const birthMonth = Object.keys(birthstones).filter(key => birthstones[key].month.toLowerCase() === month.toLowerCase());
        // Include image URL in the response
@@ -38,6 +42,7 @@ app.get('/', (req, res) => {
    res.status(400).send("Invalid request. Please provide a valid month parameter.");
 });
 
+// get corresponding birthstone
 app.get('/stone/:id', (req, res) => {
     const { id } = req.params;
     const stone = birthstones[id];
