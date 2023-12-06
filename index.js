@@ -10,16 +10,16 @@ const port = process.env.PORT || 5502;
 let birthstones = {
     1: { month: "January", stone: "Garnet" },
     2: { month: "February", stone: "Amethyst" },
-    3: { month: "March", stone: "Aquamarine" },
+    3: { month: "March", stone: "Aquamarine & Bloodstone" },
     4: { month: "April", stone: "Diamond" },
     5: { month: "May", stone: "Emerald" },
-    6: { month: "June", stone: "Alexandrite" },
+    6: { month: "June", stone: "Alexandrite, Pearl, & Moonstone" },
     7: { month: "July", stone: "Ruby" },
     8: { month: "August", stone: "Peridot" },
     9: { month: "September", stone: "Sapphire" },
-    10: { month: "October", stone: "Tourmaline" },
+    10: { month: "October", stone: "Tourmaline & Opal" },
     11: { month: "November", stone: "Citrine" },
-    12: { month: "December", stone: "Tanzanite" },
+    12: { month: "December", stone: "Tanzanite, Turquoise, & Zircon" },
 };
 
 

@@ -28,6 +28,7 @@ const getStoned = async function() {
         // define output field
         const stoneList = document.getElementById("stoneList");
 
+
         // clear previous output results
         stoneList.innerHTML = "";
 
@@ -38,19 +39,26 @@ const getStoned = async function() {
                 console.log("Stone Info:", stoneInfoJSON);
 
                 // update html
-                const listItem = document.createElement("li");
-                const stoneText = document.createTextNode(`Month: ${inputMonth}, Birthstone: ${stoneInfoJSON.stone}`);
+                // new list item for input month
+                const inputMonthListItem = document.createElement("li");
+                const inputMonthText = document.createTextNode(`Birth month: ${inputMonth}`);
 
-                listItem.appendChild(stoneText);
-                stoneList.appendChild(listItem);
+                // new list item for birthstone
+                const stoneInfoListItem = document.createElement("li");
+                const stoneInfoText = document.createTextNode(`Birthstone: ${stoneInfoJSON.stone}`);
+
+                inputMonthListItem.appendChild(inputMonthText);
+                stoneList.appendChild(inputMonthListItem);
+                stoneInfoListItem.appendChild(stoneInfoText);
+                stoneList.appendChild(stoneInfoListItem);
 
             } catch (error) {
-                console.error("Error fetching stone info:", error);
+                console.error("Error fetching stone list:", error);
             }
         }
 
     } catch (error) {
-        console.error("Error fetching stone IDs:", error);
+        console.error("Error fetching birthstone IDs:", error);
     }
 }
 
