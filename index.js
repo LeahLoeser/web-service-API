@@ -8,7 +8,7 @@ app.use(cors());
 const port = process.env.PORT || 5502;
 
 let birthstones = {
-    1: { month: "January", stone: "Garnet" },
+    1: { month: "January", stone: "Garnet", imageUrl: "images/january.png" },
     2: { month: "February", stone: "Amethyst" },
     3: { month: "March", stone: "Aquamarine & Bloodstone" },
     4: { month: "April", stone: "Diamond" },
@@ -30,10 +30,12 @@ app.get('/', (req, res) => {
 
     if (month) {
         const birthMonth = Object.keys(birthstones).filter(key => birthstones[key].month.toLowerCase() === month.toLowerCase());
-        console.log("Matching birthstones:", birthMonth);
-        return res.send(birthMonth);
-    }
-    res.status(400).send("Invalid request. Please provide a valid month parameter.");
+       // Include image URL in the response
+       const response = birthMonth.map(key => ({ ...birthstones[key], id: key }));
+       return res.json(response);
+   }
+
+   res.status(400).send("Invalid request. Please provide a valid month parameter.");
 });
 
 app.get('/stone/:id', (req, res) => {
