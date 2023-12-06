@@ -10,7 +10,7 @@ const getStones = async function(){
 
         const stoneList = document.getElementById("stoneList");
         // get something back
-        console.log(stoneIDsJSON)
+        //console.log(stoneIDsJSON)
 
         Object.keys(stoneIDsJSON).forEach(async (key, value) => {
             try {
