@@ -8,7 +8,7 @@ app.use(cors());
 const port = process.env.PORT || 5502;
 
 let birthstones = {
-    1: { month: "January", stone: "Garnet", imageUrl: "images/january.png" },
+    1: { month: "January", stone: "Garnet", imageUrl: "./images/january.png" },
     2: { month: "February", stone: "Amethyst", imageUrl: "./images/february.png" },
     3: { month: "March", stone: "Aquamarine & Bloodstone", imageUrl: "./images/march.png" },
     4: { month: "April", stone: "Diamond", imageUrl: "./images/april.png" },
