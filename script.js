@@ -8,11 +8,11 @@ const inputMonth = "";
 document.getElementById("inputMonth").addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
         // if "Enter" key is pressed, trigger the getStones function
-        getStones();
+        getStoned();
     }
 });
 
-const getStones = async function() {
+const getStoned = async function() {
     try {
         // get user input
         const inputMonth = document.getElementById("inputMonth").value;
@@ -20,10 +20,10 @@ const getStones = async function() {
         console.log("Input month:", inputMonth);
 
         // request info from API
-        const stoneIDs = await fetch(`${baseURL}?month=${encodeURIComponent(inputMonth)}`);
-        const stoneIDsJSON = await stoneIDs.json();
+        const birthstoneID = await fetch(`${baseURL}?month=${encodeURIComponent(inputMonth)}`);
+        const birthstoneID_JSON = await birthstoneID.json();
         // get something back
-        console.log("Stone IDs:", stoneIDsJSON);
+        console.log("birthstone ID:", birthstoneID_JSON);
 
         // define output field
         const stoneList = document.getElementById("stoneList");
@@ -31,7 +31,7 @@ const getStones = async function() {
         // clear previous output results
         stoneList.innerHTML = "";
 
-        for (const key of stoneIDsJSON) {
+        for (const key of birthstoneID_JSON) {
             try {
                 const stoneInfo = await fetch(`${baseURL}/stone/${key}`);
                 const stoneInfoJSON = await stoneInfo.json();
@@ -54,4 +54,4 @@ const getStones = async function() {
     }
 }
 
-getStones();
+getStoned();
