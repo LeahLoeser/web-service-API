@@ -1,8 +1,6 @@
-// render URL
+// script.js
 const baseURL = "https://modern-birthstones.onrender.com" 
-
- // user input
-const inputMonth = "";
+const inputMonth = "May";
 
 // add event listener to the input field to listen for "Enter" key press
 document.getElementById("inputMonth").addEventListener("keyup", function(event) {
